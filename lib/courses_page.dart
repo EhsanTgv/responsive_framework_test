@@ -16,9 +16,24 @@ class CoursesPage extends StatelessWidget {
         backgroundColor: Colors.lightBlue[800],
         centerTitle: true,
         title: const AppBarTitle(),
+        leading: ResponsiveVisibility(
+          hiddenWhen: [const Condition.largerThan(name: TABLET)],
+          child: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {},
+          ),
+        ),
         actions: [
-          MenuTextButton(text: 'Courses'),
-          MenuTextButton(text: 'About'),
+          const ResponsiveVisibility(
+            visible: false,
+            visibleWhen: [Condition.largerThan(name: TABLET)],
+            child: MenuTextButton(text: 'Courses'),
+          ),
+          const ResponsiveVisibility(
+            visible: false,
+            visibleWhen: [Condition.largerThan(name: TABLET)],
+            child: MenuTextButton(text: 'About'),
+          ),
           IconButton(
             icon: const Icon(Icons.mark_email_unread_rounded),
             onPressed: () {},
